@@ -7,14 +7,16 @@ H.kind('MyKind', {
 	events: {
 		LOAD : function(nSeconds) {
 			return {
-				timeElapsed: nSeconds
+				thisObject	: this,
+				timeElapsed	: nSeconds
 			}
 		}
 	},
 	load: function() {
 		this.emitLoad(234);
-		H.assert(H._mytest.timeElapsed == 234, 'Test own object\'s event emitters');
-		H.assert(H._mytest.sender === this, 'Test own object\'s event sender');
+		H.assert(H._mytest.timeElapsed == 234, 	'object\'s event emitters');
+		H.assert(H._mytest.sender === this, 	'object\'s event sender');
+		H.assert(H._mytest.thisObject === this, '"this" binding in event definitions');
 	}
 })
 
@@ -31,5 +33,8 @@ var o = H.MyKind.construct();
 o.load();
 
 o.prop1 = 3;
-H.assert(H._mytest.sender === o, 'Test inherited object\'s event emitters');
 
+H.assert(
+	H._mytest.sender === o, 
+	'inherited event emitters'
+);

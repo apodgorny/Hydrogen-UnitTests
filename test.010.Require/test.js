@@ -1,7 +1,18 @@
 var H = require('../../H');
-H.assert(true, 'Load Hydrogen');
+
+H.assert(
+	true, 
+	'loading Hydrogen'
+);
 
 H.require('UnitTests/test.010.Require/dummy');
-H.assert(true, 'Load package');
 
-H.assert(H.dummy == 54, 'Eval package contents');
+H.assert(
+	true, 
+	'package loading'
+);
+
+H.assert(
+	H.dummy == 54, 
+	'package contents eval'
+);

@@ -5,7 +5,6 @@ function runNextTest(aTests, n) {
 		process.exit();
 	}
 	var oChildProcess = require('child_process');
-	
 	oChildProcess.exec('node ' + aTests[n].path, function (sError, sOutput) {
 		var sDots = ' ' + ('.........................................................................').slice(- 80 + aTests[n].name.length) + ' ',
 			sOutput = sOutput ? '\n' + sOutput : '',
@@ -45,5 +44,5 @@ function runTests(sTestDir) {
 	runNextTest(compileTestList(sTestDir));
 }
 
-runTests('UnitTests');
+runTests(__dirname);
 	

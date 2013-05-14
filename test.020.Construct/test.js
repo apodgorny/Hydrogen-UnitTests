@@ -5,4 +5,7 @@ H.kind('Test', {
 });
 
 var oTest = H.Test.construct();
-H.assert(oTest.foo == 'bar', 'Construct object');
+H.assert(
+	oTest.foo == 'bar', 
+	'object construction'
+);
